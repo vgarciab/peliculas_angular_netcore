@@ -20,4 +20,8 @@ export class ListadoPeliculasComponent implements OnInit {
 
   }
 
+  remover(indicePelicula: number) {
+    this.peliculas.splice(indicePelicula, 1);
+  }
+
 }
