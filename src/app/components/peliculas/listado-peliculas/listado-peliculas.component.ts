@@ -11,7 +11,6 @@ export class ListadoPeliculasComponent implements OnInit {
   @Input() 
   peliculas: any;
 
-
   constructor() { 
     
   }

@@ -8,13 +8,15 @@ import { AppComponent } from './components/app/app.component';
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import { ListadoPeliculasComponent } from './components/peliculas/listado-peliculas/listado-peliculas.component';
+import { ListadoGenericoComponent } from './components/utilidades/listado-generico/listado-generico.component';
 
 registerLocaleData(localeEs);
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListadoPeliculasComponent
+    ListadoPeliculasComponent,
+    ListadoGenericoComponent
   ],
   imports: [
     BrowserModule,
