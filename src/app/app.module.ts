@@ -12,6 +12,7 @@ import { ListadoGenericoComponent } from './components/utilidades/listado-generi
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from './components/material/material.module';
+import { MenuComponent } from './components/menu/menu.component';
 
 registerLocaleData(localeEs);
 
@@ -19,7 +20,8 @@ registerLocaleData(localeEs);
   declarations: [
     AppComponent,
     ListadoPeliculasComponent,
-    ListadoGenericoComponent
+    ListadoGenericoComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
