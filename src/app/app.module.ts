@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from './components/material/material.module';
 import { MenuComponent } from './components/menu/menu.component';
+import { RatingComponent } from './components/utilidades/rating/rating.component';
 
 registerLocaleData(localeEs);
 
@@ -21,7 +22,8 @@ registerLocaleData(localeEs);
     AppComponent,
     ListadoPeliculasComponent,
     ListadoGenericoComponent,
-    MenuComponent
+    MenuComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,
