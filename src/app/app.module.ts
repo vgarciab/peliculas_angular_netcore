@@ -9,6 +9,9 @@ import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import { ListadoPeliculasComponent } from './components/peliculas/listado-peliculas/listado-peliculas.component';
 import { ListadoGenericoComponent } from './components/utilidades/listado-generico/listado-generico.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MaterialModule } from './components/material/material.module';
 
 registerLocaleData(localeEs);
 
@@ -20,7 +23,9 @@ registerLocaleData(localeEs);
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [ 
     {
