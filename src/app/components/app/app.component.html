@@ -6,7 +6,18 @@
 <app-menu></app-menu>
 
 <div class="contenedor">
-    <app-rating (rated)="manejarRated($event)"></app-rating>
+    
+    <div>
+        <!-- Se podría haber escrito: '$event.target.value' directamente, pero el compilador no reconoce la propiedad 'value' -->
+        <input type="text" (input)="asignarTitulo($event)">
+    </div>
+
+    <div>
+        <input type="checkbox" checked (change)="ocultar = !ocultar" />Ocultar
+    </div>
+
+    <app-ciclo-de-vida *ngIf="ocultar" [titulo]="title"></app-ciclo-de-vida>
+    <!-- <app-rating (rated)="manejarRated($event)"></app-rating> -->
     
     <!-- <h2>En cines</h2> 
 

@@ -7,10 +7,12 @@ import { Component, Inject, OnInit, LOCALE_ID } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   
-  title = 'front-end';
+  title = 'Al valor que yo quiera';
   peliculasEnCines?:Array<{titulo:string, fechaLanzamiento: Date, precio:number}>;
-  peliculasProximosEstrenos?:Array<{titulo:string, fechaLanzamiento: Date, precio:number}>;
   // otra manera de declarar la variable >> peliculas: {titulo:string, fechaLanzamiento: Date, precio:number}[] | any;
+  peliculasProximosEstrenos?:Array<{titulo:string, fechaLanzamiento: Date, precio:number}>;
+  ocultar:boolean = false;
+  
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -54,5 +56,9 @@ export class AppComponent implements OnInit {
    alert(voto);
   }
 
+
+  asignarTitulo(e:any) {
+    this.title = e.target.value;
+  }
   
 }

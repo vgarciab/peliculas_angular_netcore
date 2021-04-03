@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './components/material/material.module';
 import { MenuComponent } from './components/menu/menu.component';
 import { RatingComponent } from './components/utilidades/rating/rating.component';
+import { CicloDeVidaComponent } from './components/ciclo-de-vida/ciclo-de-vida.component';
 
 registerLocaleData(localeEs);
 
@@ -23,7 +24,8 @@ registerLocaleData(localeEs);
     ListadoPeliculasComponent,
     ListadoGenericoComponent,
     MenuComponent,
-    RatingComponent
+    RatingComponent,
+    CicloDeVidaComponent
   ],
   imports: [
     BrowserModule,
