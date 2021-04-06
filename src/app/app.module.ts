@@ -28,6 +28,7 @@ import { EditarActorComponent } from './components/actores/editar-actor/editar-a
 import { EditarGeneroComponent } from './components/generos/editar-genero/editar-genero.component';
 import { EditarCineComponent } from './components/cines/editar-cine/editar-cine.component';
 import { EditarPeliculaComponent } from './components/peliculas/editar-pelicula/editar-pelicula.component';
+import { FormularioGeneroComponent } from './components/generos/formulario-genero/formulario-genero.component';
 
 
 registerLocaleData(localeEs);
@@ -50,7 +51,8 @@ registerLocaleData(localeEs);
     EditarActorComponent,
     EditarGeneroComponent,
     EditarCineComponent,
-    EditarPeliculaComponent
+    EditarPeliculaComponent,
+    FormularioGeneroComponent
   ],
   imports: [
     BrowserModule,
