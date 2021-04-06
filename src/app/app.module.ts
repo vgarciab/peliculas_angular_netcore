@@ -16,6 +16,12 @@ import { MenuComponent } from './components/menu/menu.component';
 import { RatingComponent } from './components/utilidades/rating/rating.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { IndiceGenerosComponent } from './components/generos/indice-generos/indice-generos.component';
+import { CrearGeneroComponent } from './components/generos/crear-genero/crear-genero.component';
+import { IndiceActoresComponent } from './components/actores/indice-actores/indice-actores.component';
+import { CrearActorComponent } from './components/actores/crear-actor/crear-actor.component';
+import { CrearPeliculaComponent } from './components/peliculas/crear-pelicula/crear-pelicula.component';
+import { CrearCineComponent } from './components/cines/crear-cine/crear-cine.component';
+import { IndiceCinesComponent } from './components/cines/indice-cines/indice-cines.component';
 
 
 registerLocaleData(localeEs);
@@ -28,7 +34,13 @@ registerLocaleData(localeEs);
     MenuComponent,
     RatingComponent,
     LandingPageComponent,
-    IndiceGenerosComponent
+    IndiceGenerosComponent,
+    CrearGeneroComponent,
+    IndiceActoresComponent,
+    CrearActorComponent,
+    CrearPeliculaComponent,
+    CrearCineComponent,
+    IndiceCinesComponent
   ],
   imports: [
     BrowserModule,
