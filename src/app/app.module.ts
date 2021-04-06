@@ -22,6 +22,10 @@ import { CrearActorComponent } from './components/actores/crear-actor/crear-acto
 import { CrearPeliculaComponent } from './components/peliculas/crear-pelicula/crear-pelicula.component';
 import { CrearCineComponent } from './components/cines/crear-cine/crear-cine.component';
 import { IndiceCinesComponent } from './components/cines/indice-cines/indice-cines.component';
+import { EditarActorComponent } from './components/actores/editar-actor/editar-actor.component';
+import { EditarGeneroComponent } from './components/generos/editar-genero/editar-genero.component';
+import { EditarCineComponent } from './components/cines/editar-cine/editar-cine.component';
+import { EditarPeliculaComponent } from './components/peliculas/editar-pelicula/editar-pelicula.component';
 
 
 registerLocaleData(localeEs);
@@ -40,7 +44,11 @@ registerLocaleData(localeEs);
     CrearActorComponent,
     CrearPeliculaComponent,
     CrearCineComponent,
-    IndiceCinesComponent
+    IndiceCinesComponent,
+    EditarActorComponent,
+    EditarGeneroComponent,
+    EditarCineComponent,
+    EditarPeliculaComponent
   ],
   imports: [
     BrowserModule,
