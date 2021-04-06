@@ -8,9 +8,10 @@ import { Component, Inject, OnInit, LOCALE_ID } from '@angular/core';
 export class AppComponent implements OnInit {
   
   title = 'Al valor que yo quiera';
-  peliculasEnCines?:Array<{titulo:string, fechaLanzamiento: Date, precio:number}>;
+  peliculasEnCines:[] | any;
   // otra manera de declarar la variable >> peliculas: {titulo:string, fechaLanzamiento: Date, precio:number}[] | any;
-  peliculasProximosEstrenos?:Array<{titulo:string, fechaLanzamiento: Date, precio:number}>;
+  // o también >> peliculas?:Array<{titulo:string, fechaLanzamiento: Date, precio:number}>;
+  peliculasProximosEstrenos:[] | any;
   ocultar:boolean = false;
   
 
@@ -22,11 +23,13 @@ export class AppComponent implements OnInit {
           titulo: 'Spider-Man',
           fechaLanzamiento: new Date(),
           precio: 1400.99,
+          poster: 'https://m.media-amazon.com/images/M/MV5BMGZlNTY1ZWUtYTMzNC00ZjUyLWE0MjQtMTMxN2E3ODYxMWVmXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_UX182_CR0,0,182,268_AL_.jpg',
         },
         {
           titulo: 'Moana',
           fechaLanzamiento: new Date('2016-11-14'),
           precio: 300.99,
+          poster: 'https://m.media-amazon.com/images/M/MV5BMjI4MzU5NTExNF5BMl5BanBnXkFtZTgwNzY1MTEwMDI@._V1_UX182_CR0,0,182,268_AL_.jpg'
         },
       ];
 
