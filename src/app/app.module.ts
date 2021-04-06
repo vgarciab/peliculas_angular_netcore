@@ -10,6 +10,8 @@ import { registerLocaleData } from '@angular/common';
 import { ListadoPeliculasComponent } from './components/peliculas/listado-peliculas/listado-peliculas.component';
 import { ListadoGenericoComponent } from './components/utilidades/listado-generico/listado-generico.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 import { MaterialModule } from './components/material/material.module';
 import { MenuComponent } from './components/menu/menu.component';
@@ -54,7 +56,8 @@ registerLocaleData(localeEs);
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   providers: [ 
     {

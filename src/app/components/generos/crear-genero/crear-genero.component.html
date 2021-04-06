@@ -1,1 +1,15 @@
-<button mat-flat-button type="button" color="primary" (click)="guardarCambios()">Guardar cambios</button>
+<h2>Crear género</h2>
+
+<form (submit)="guardarCambios()" [formGroup]="form">
+    <mat-form-field appearance="outline">  
+        <!-- Es asterisco indica que es un campo requerido -->
+        <mat-label>Nombre*</mat-label>
+        <input formControlName="nombre" matInput/>
+    </mat-form-field>
+    <div>
+        <button mat-flat-button color="primary">Guardar cambios</button>    
+        <a mat-stroked-button routerLink="/generos">Cancelar</a>
+    </div>
+</form>
+
+
