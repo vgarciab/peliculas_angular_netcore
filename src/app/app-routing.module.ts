@@ -26,6 +26,7 @@ const routes: Routes = [
   {path: 'cines/editar/:id', component: EditarCineComponent },
   {path: 'peliculas/crear', component: CrearPeliculaComponent },
   {path: 'peliculas/editar/:id', component: EditarPeliculaComponent },
+  {path: '**', redirectTo: ''},  // -> Este es un wildcard que va a atrapar cualquier ruta (404, etc) que nos se aplique en todas las anteriores (se leen por orden, de arriba a abajo)
 ];
 
 @NgModule({
