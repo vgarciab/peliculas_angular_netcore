@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './components/material/material.module';
 import { MenuComponent } from './components/menu/menu.component';
 import { RatingComponent } from './components/utilidades/rating/rating.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { IndiceGenerosComponent } from './components/generos/indice-generos/indice-generos.component';
 
 
 registerLocaleData(localeEs);
@@ -24,7 +26,9 @@ registerLocaleData(localeEs);
     ListadoPeliculasComponent,
     ListadoGenericoComponent,
     MenuComponent,
-    RatingComponent
+    RatingComponent,
+    LandingPageComponent,
+    IndiceGenerosComponent
   ],
   imports: [
     BrowserModule,
