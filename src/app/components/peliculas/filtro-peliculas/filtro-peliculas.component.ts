@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-filtro-peliculas',
@@ -30,19 +33,77 @@ export class FiltroPeliculasComponent implements OnInit {
     enCines: false,
   }
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, 
+              private location: Location,
+              private activateRoute: ActivatedRoute) {
+
+   }
+
 
   ngOnInit(): void {
     this.form = this.formBuilder.group(this.formularioOriginal);
+    this.leerValoresURL();
+    this.buscarPeliculas(this.form.value);
     
     this.form.valueChanges // --> Esto devueve un Observable, al que nos podemos subscribir
           .subscribe((valores:any) => {  // va a contener los valores del formulario. Cada vez que cambia algún valor del form, el observable lo detecta y notifica.
             console.log(valores);  
             this.peliculas = this.peliculasOriginal;
             this.buscarPeliculas(valores);
+            this.escribirParametrosBusquedaEnURL();
           })
   }
 
+
+  private leerValoresURL() {
+    this.activateRoute.queryParams.subscribe((params) => {
+      var objeto: any = {};
+
+      if (params.titulo) {
+        objeto.titulo = params.titulo;
+      }
+  
+      if (params.generoId) {
+        objeto.generoId = Number(params.generoId);
+      }
+  
+      if (params.proximosEstrenos) {
+        objeto.proximosEstrenos = params.proximosEstrenos;
+      }
+  
+      if (params.enCines) {
+        objeto.enCines = params.enCines;
+      }
+  
+      this.form.patchValue(objeto);
+
+    });
+  }
+
+
+  private escribirParametrosBusquedaEnURL() {
+    var queryStrings = [];
+    var valoresFormulario = this.form.value;
+
+    if (valoresFormulario.titulo) {
+      queryStrings.push(`titulo=${valoresFormulario.titulo}`);
+    }
+
+    if (valoresFormulario.generoId != '0') {
+      queryStrings.push(`generoId=${valoresFormulario.generoId}`);
+    }
+
+    if (valoresFormulario.proximosEstrenos) {
+      queryStrings.push(`proximosEstrenos=${valoresFormulario.proximosEstrenos}`);
+    }
+
+    if (valoresFormulario.enCines) {
+      queryStrings.push(`enCines=${valoresFormulario.enCines}`);
+    }
+
+    this.location.replaceState('peliculas/buscar', queryStrings.join('&'));
+
+  }
 
   buscarPeliculas(valores:any) {
     if (valores.titulo) {
