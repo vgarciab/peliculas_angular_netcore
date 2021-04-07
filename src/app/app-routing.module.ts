@@ -12,6 +12,7 @@ import { IndiceGenerosComponent } from './components/generos/indice-generos/indi
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { CrearPeliculaComponent } from './components/peliculas/crear-pelicula/crear-pelicula.component';
 import { EditarPeliculaComponent } from './components/peliculas/editar-pelicula/editar-pelicula.component';
+import { FiltroPeliculasComponent } from './components/peliculas/filtro-peliculas/filtro-peliculas.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'cines/editar/:id', component: EditarCineComponent },
   {path: 'peliculas/crear', component: CrearPeliculaComponent },
   {path: 'peliculas/editar/:id', component: EditarPeliculaComponent },
+  {path: 'peliculas/buscar', component: FiltroPeliculasComponent },
   {path: '**', redirectTo: ''},  // -> Este es un wildcard que va a atrapar cualquier ruta (404, etc) que nos se aplique (no definida) en todas las anteriores (se leen por orden, de arriba a abajo)
 ];
 
