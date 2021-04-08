@@ -55,7 +55,7 @@ export class FiltroPeliculasComponent implements OnInit {
   }
 
 
-  private leerValoresURL() {
+  private leerValoresURL() {  // --> Esto es un Observable
     this.activateRoute.queryParams.subscribe((params) => {
       var objeto: any = {};
 

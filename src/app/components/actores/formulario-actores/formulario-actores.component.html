@@ -3,17 +3,25 @@
         <!-- Es asterisco indica (visualmente) que es un campo requerido -->
         <mat-label>Nombre*</mat-label>
         <input formControlName="nombre" matInput/>
-        <mat-error *ngIf="form.invalid">{{ obtenerErrorCampoNombre() }}</mat-error>
+        <mat-error>El campo nombre es requerido</mat-error>
     </mat-form-field>
-    
+
+    <mat-form-field appearance="outline">  
+        <mat-label>Fecha de nacimiento</mat-label>
+        <input formControlName="fechaNacimiento" matInput [matDatepicker]="picker"/>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    </mat-form-field>
+
     <div>
         <button mat-flat-button color="primary" [disabled]="form.invalid">
             Guardar cambios
         </button>    
 
-        <a mat-stroked-button routerLink="/generos">
+        <a mat-stroked-button routerLink="/actores">
             Cancelar
         </a>
     </div>
-</form>
 
+
+</form>
