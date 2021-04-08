@@ -31,6 +31,7 @@ import { EditarPeliculaComponent } from './components/peliculas/editar-pelicula/
 import { FormularioGeneroComponent } from './components/generos/formulario-genero/formulario-genero.component';
 import { FiltroPeliculasComponent } from './components/peliculas/filtro-peliculas/filtro-peliculas.component';
 import { FormularioActoresComponent } from './components/actores/formulario-actores/formulario-actores.component';
+import { InputImgComponent } from './components/utilidades/input-img/input-img.component';
 
 
 registerLocaleData(localeEs);
@@ -56,7 +57,8 @@ registerLocaleData(localeEs);
     EditarPeliculaComponent,
     FormularioGeneroComponent,
     FiltroPeliculasComponent,
-    FormularioActoresComponent
+    FormularioActoresComponent,
+    InputImgComponent
   ],
   imports: [
     BrowserModule,
