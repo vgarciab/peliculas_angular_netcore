@@ -11,6 +11,7 @@ import { ListadoPeliculasComponent } from './components/peliculas/listado-pelicu
 import { ListadoGenericoComponent } from './components/utilidades/listado-generico/listado-generico.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MarkdownModule } from 'ngx-markdown';
 
 
 import { MaterialModule } from './components/material/material.module';
@@ -32,6 +33,7 @@ import { FormularioGeneroComponent } from './components/generos/formulario-gener
 import { FiltroPeliculasComponent } from './components/peliculas/filtro-peliculas/filtro-peliculas.component';
 import { FormularioActoresComponent } from './components/actores/formulario-actores/formulario-actores.component';
 import { InputImgComponent } from './components/utilidades/input-img/input-img.component';
+import { InputMarkdownComponent } from './components/utilidades/input-markdown/input-markdown.component';
 
 
 registerLocaleData(localeEs);
@@ -58,14 +60,16 @@ registerLocaleData(localeEs);
     FormularioGeneroComponent,
     FiltroPeliculasComponent,
     FormularioActoresComponent,
-    InputImgComponent
+    InputImgComponent,
+    InputMarkdownComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MarkdownModule.forRoot()
   ],
   providers: [ 
     {

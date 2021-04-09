@@ -16,7 +16,7 @@ export class FormularioActoresComponent implements OnInit {
   @Input()
   modelo: actorDTO | any;
   @Output()
-  submit: EventEmitter<actorCreacionDTO> = new EventEmitter<actorCreacionDTO>();
+  submitFormulario: EventEmitter<actorCreacionDTO> = new EventEmitter<actorCreacionDTO>();
 
 
 
@@ -29,6 +29,7 @@ export class FormularioActoresComponent implements OnInit {
       }],
       fechaNacimiento: '',
       foto: '',
+      biografia: '',
     });
 
     if (this.modelo !== undefined) {
@@ -43,8 +44,13 @@ export class FormularioActoresComponent implements OnInit {
 
   }
 
+
+  cambioMarkdown(texto: string) {
+    this.form.get('biografia').setValue(texto);
+  }
+
   guardarCambios() { // este método se llama onSubmit() en el código fuente de Felipe Gavilán
-    this.submit.emit(this.form.value); // aquí se accede a toda la información  contenida en el formulario.
+    this.submitFormulario.emit(this.form.value); // aquí se accede a toda la información  contenida en el formulario.
   }
 
 
