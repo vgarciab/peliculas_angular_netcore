@@ -1,11 +1,5 @@
-import { Component, OnInit, NgModule } from '@angular/core';
-import { latLng, tileLayer } from 'leaflet';
-import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-
-imports: [
-  LeafletModule
-]
-
+import { Component, OnInit } from '@angular/core';
+import { latLng, LeafletMouseEvent, marker, Marker, tileLayer } from 'leaflet';
 
 
 @Component({
@@ -14,24 +8,35 @@ imports: [
   styleUrls: ['./mapa.component.css']
 })
 
-
-
-
+ 
 
 export class MapaComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
   options = {
     layers: [
       tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' })
     ],
-    zoom: 5,
-    center: latLng(46.879966, -121.726909)
+    zoom: 12,
+    center: latLng(39.45419664659368, -31.12838745117188)
   };
+
+
+  capas: Marker<any>[] = [];
+
+  ngOnInit(): void {
+  }
+
+
+  manejarClick(event: LeafletMouseEvent)  {
+    const latitud = event.latlng.lat;
+    const longitud = event.latlng.lng;
+    console.log({latitud, longitud})
+
+    this.capas = [];
+    this.capas.push(marker([latitud, longitud]));
+  }
 
 }
  
