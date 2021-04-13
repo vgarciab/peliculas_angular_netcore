@@ -24,7 +24,7 @@ export class FormularioCineComponent implements OnInit {
     this.form = this.formBuilder.group({
       nombre: [
         '', { // el valor por defecto del campo
-        validators: [Validators.required],
+        validators: [Validators.required], 
       }],
     });
 

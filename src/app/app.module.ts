@@ -12,6 +12,10 @@ import { ListadoGenericoComponent } from './components/utilidades/listado-generi
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MarkdownModule } from 'ngx-markdown';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+
+
+
 
 
 import { MaterialModule } from './components/material/material.module';
@@ -35,6 +39,7 @@ import { FormularioActoresComponent } from './components/actores/formulario-acto
 import { InputImgComponent } from './components/utilidades/input-img/input-img.component';
 import { InputMarkdownComponent } from './components/utilidades/input-markdown/input-markdown.component';
 import { FormularioCineComponent } from './components/cines/formulario-cine/formulario-cine.component';
+import { MapaComponent } from './components/utilidades/mapa/mapa.component';
 
 
 registerLocaleData(localeEs);
@@ -63,7 +68,8 @@ registerLocaleData(localeEs);
     FormularioActoresComponent,
     InputImgComponent,
     InputMarkdownComponent,
-    FormularioCineComponent
+    FormularioCineComponent,
+    MapaComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +77,7 @@ registerLocaleData(localeEs);
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
+    LeafletModule,
     MarkdownModule.forRoot()
   ],
   providers: [ 
