@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { peliculaCreacionDTO } from '../pelicula';
 
 @Component({
   selector: 'app-crear-pelicula',
@@ -11,5 +12,13 @@ export class CrearPeliculaComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  guardarCambios(pelicula: peliculaCreacionDTO) {
+    console.log(pelicula);
+    //..guardar los cambios (a través de un servicio (backend))
+    // guardarCambios 
+
+  }
+
 
 }

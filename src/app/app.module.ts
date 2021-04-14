@@ -41,6 +41,7 @@ import { InputImgComponent } from './components/utilidades/input-img/input-img.c
 import { InputMarkdownComponent } from './components/utilidades/input-markdown/input-markdown.component';
 import { FormularioCineComponent } from './components/cines/formulario-cine/formulario-cine.component';
 import { MapaComponent } from './components/utilidades/mapa/mapa.component';
+import { FormularioPeliculaComponent } from './components/peliculas/formulario-pelicula/formulario-pelicula.component';
 
 
 registerLocaleData(localeEs);
@@ -70,7 +71,8 @@ registerLocaleData(localeEs);
     InputImgComponent,
     InputMarkdownComponent,
     FormularioCineComponent,
-    MapaComponent
+    MapaComponent,
+    FormularioPeliculaComponent
   ],
   imports: [
     BrowserModule,

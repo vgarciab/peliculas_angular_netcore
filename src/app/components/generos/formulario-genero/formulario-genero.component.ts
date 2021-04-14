@@ -16,7 +16,7 @@ export class FormularioGeneroComponent implements OnInit {
   @Input()
   modelo: generoCreacionDTO | any;
   @Output()
-  submit: EventEmitter<generoCreacionDTO> = new EventEmitter<generoCreacionDTO>();
+  submitFormulario: EventEmitter<generoCreacionDTO> = new EventEmitter<generoCreacionDTO>();
   
   // Los Servicios se inyectan a través del constructor de la Class
   constructor(private formBuilder: FormBuilder) { }
@@ -34,7 +34,7 @@ export class FormularioGeneroComponent implements OnInit {
   }
 
   guardarCambios() {
-    this.submit.emit(this.form.value); // aquí se accede a toda la información  contenida en el formulario.
+    this.submitFormulario.emit(this.form.value); // aquí se accede a toda la información  contenida en el formulario.
   }
 
 
