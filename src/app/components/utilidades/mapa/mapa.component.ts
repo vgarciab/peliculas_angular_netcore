@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { latLng, LeafletMouseEvent, marker, Marker, tileLayer } from 'leaflet';
+import { Coordenada } from './coordenada';
+
 
 
 @Component({
@@ -8,11 +11,16 @@ import { latLng, LeafletMouseEvent, marker, Marker, tileLayer } from 'leaflet';
   styleUrls: ['./mapa.component.css']
 })
 
- 
-
 export class MapaComponent implements OnInit {
 
   constructor() { }
+
+
+  @Input()  
+  coordenadasIniciales: Coordenada[] = [];
+
+  @Output() 
+  coordenadaSeleccionada: EventEmitter<Coordenada> = new EventEmitter<Coordenada>();
 
   options = {
     layers: [
@@ -26,6 +34,8 @@ export class MapaComponent implements OnInit {
   capas: Marker<any>[] = [];
 
   ngOnInit(): void {
+    // Mapear las coordenadas
+    this.capas = this.coordenadasIniciales.map(valor => marker([valor.latitud, valor.longitud]));
   }
 
 
@@ -36,6 +46,8 @@ export class MapaComponent implements OnInit {
 
     this.capas = [];
     this.capas.push(marker([latitud, longitud]));
+    // El componente Padre (éste) va a recibir las coordenadas (desde el html)
+    this.coordenadaSeleccionada.emit({ latitud: latitud, longitud: longitud }) 
   }
 
 }
