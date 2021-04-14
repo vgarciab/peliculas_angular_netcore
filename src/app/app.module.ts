@@ -42,6 +42,7 @@ import { InputMarkdownComponent } from './components/utilidades/input-markdown/i
 import { FormularioCineComponent } from './components/cines/formulario-cine/formulario-cine.component';
 import { MapaComponent } from './components/utilidades/mapa/mapa.component';
 import { FormularioPeliculaComponent } from './components/peliculas/formulario-pelicula/formulario-pelicula.component';
+import { SelectorMultipleComponent } from './components/utilidades/selector-multiple/selector-multiple.component';
 
 
 registerLocaleData(localeEs);
@@ -72,7 +73,8 @@ registerLocaleData(localeEs);
     InputMarkdownComponent,
     FormularioCineComponent,
     MapaComponent,
-    FormularioPeliculaComponent
+    FormularioPeliculaComponent,
+    SelectorMultipleComponent
   ],
   imports: [
     BrowserModule,

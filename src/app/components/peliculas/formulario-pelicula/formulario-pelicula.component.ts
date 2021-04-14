@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MultipleSelectorModel } from '../../utilidades/selector-multiple/MultipleSelectorModel';
 import { peliculaCreacionDTO, peliculaDTO } from '../pelicula';
 
 @Component({
@@ -20,6 +21,13 @@ export class FormularioPeliculaComponent implements OnInit {
   @Output()
   submitFormulario: EventEmitter<peliculaCreacionDTO> = new EventEmitter<peliculaCreacionDTO>();
 
+  generosNoSeleccionados: MultipleSelectorModel[] = [
+    {llave: 1, valor: 'Drama'},
+    {llave: 2, valor: 'Acción'},
+    {llave: 3, valor: 'Comedia'},
+  ];
+
+  generosSeleccionados: MultipleSelectorModel[] = [];
 
   ngOnInit(): void {
     
@@ -34,7 +42,8 @@ export class FormularioPeliculaComponent implements OnInit {
       enCines: false,
       trailer: '',
       fechaLanzamiento: '',
-      poster: ''
+      poster: '',
+      generosId: ''
     });
 
     if (this.modelo !== undefined) {
@@ -53,6 +62,9 @@ export class FormularioPeliculaComponent implements OnInit {
 
   
   guardarCambios() {
+    console.log(this.generosSeleccionados);
+    const generosId = this.generosSeleccionados.map(val => val.llave);
+    this.form.get('generosId').setValue(generosId);
     // En el vídeo del curso, la vble 'submitFormulario' se llama 'OnSubmit' (ojo, que no es un evento, es una variable)
     this.submitFormulario.emit(this.form.value); // aquí se accede a toda la información  contenida en el formulario.
   }
