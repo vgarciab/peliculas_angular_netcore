@@ -21,11 +21,12 @@ export class InputMarkdownComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
+  /* Con binding de doble vía, ya no es necesario esta función: >> 
   inputTextArea(texto:string) {
     // console.log(texto);
     this.contenidoMarkdown = texto;
     this.changeMarkdown.emit(texto);
   }
+  */
 
 }

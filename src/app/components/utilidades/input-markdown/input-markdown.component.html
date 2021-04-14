@@ -1,8 +1,9 @@
 <mat-tab-group>
     <mat-tab label="Editar">
-        <mat-form-field appearance="fill">  
+        <mat-form-field appearance="fill" (change)="changeMarkdown.emit($any($event.target).value);">  
             <mat-label>{{ placeHoldertextarea }}</mat-label>
-            <textarea (input)="inputTextArea($any($event.target).value)" matInput></textarea>
+            <!-- ngModel nos permit utilizar Binding de doble vía (Cfr. clase #62) -->
+            <textarea [(ngModel)]="contenidoMarkdown" matInput></textarea>
         </mat-form-field>
     </mat-tab>
 
