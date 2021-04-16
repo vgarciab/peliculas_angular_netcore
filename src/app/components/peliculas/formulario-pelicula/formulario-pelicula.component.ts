@@ -21,6 +21,7 @@ export class FormularioPeliculaComponent implements OnInit {
   @Output()
   submitFormulario: EventEmitter<peliculaCreacionDTO> = new EventEmitter<peliculaCreacionDTO>();
 
+  // Géneros
   generosNoSeleccionados: MultipleSelectorModel[] = [
     {llave: 1, valor: 'Drama'},
     {llave: 2, valor: 'Acción'},
@@ -28,6 +29,16 @@ export class FormularioPeliculaComponent implements OnInit {
   ];
 
   generosSeleccionados: MultipleSelectorModel[] = [];
+
+  // Cines
+  cinesNoSeleccionados: MultipleSelectorModel[] = [
+    {llave: 1, valor: 'Sambil'},
+    {llave: 2, valor: 'Ágora'},
+    {llave: 3, valor: 'Acrópilis'},
+  ];
+
+  cinesSeleccionados: MultipleSelectorModel[] = [];
+
 
   ngOnInit(): void {
     
@@ -43,7 +54,8 @@ export class FormularioPeliculaComponent implements OnInit {
       trailer: '',
       fechaLanzamiento: '',
       poster: '',
-      generosId: ''
+      generosId: '',
+      cinesId: ''
     });
 
     if (this.modelo !== undefined) {
@@ -63,8 +75,14 @@ export class FormularioPeliculaComponent implements OnInit {
   
   guardarCambios() {
     console.log(this.generosSeleccionados);
-    const generosId = this.generosSeleccionados.map(val => val.llave);
-    this.form.get('generosId').setValue(generosId);
+    // Géneros
+    const generosIds = this.generosSeleccionados.map(val => val.llave);
+    this.form.get('generosId').setValue(generosIds);
+
+    // Cines
+    const cinesIds = this.cinesSeleccionados.map(val => val.llave);
+    this.form.get('cinesId').setValue(cinesIds);
+
     // En el vídeo del curso, la vble 'submitFormulario' se llama 'OnSubmit' (ojo, que no es un evento, es una variable)
     this.submitFormulario.emit(this.form.value); // aquí se accede a toda la información  contenida en el formulario.
   }
