@@ -26,7 +26,9 @@
     *ngIf="actoresSeleccionados.length > 0"
     mat-table
     [dataSource]="actoresSeleccionados"
-    class="mat-elevation-z8">
+    class="mat-elevation-z8"
+    cdkDropList
+    (cdkDropListDropped)="finalizarArrastre($event)">
 
     <!-- Cada columna de la tabla es un ng-container -->
     <ng-container matColumnDef="imagen">
@@ -67,5 +69,7 @@
 
 
 
-    <tr mat-row *matRowDef="let row; columns: columnasAMostrar"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnasAMostrar" cdkDrag [cdkDragData]="row">
+
+    </tr>
 </table>
