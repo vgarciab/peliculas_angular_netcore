@@ -1,5 +1,6 @@
 import { NgModule, LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
@@ -86,6 +87,7 @@ registerLocaleData(localeEs);
     ReactiveFormsModule,
     FormsModule,
     LeafletModule,
+    HttpClientModule,
     MarkdownModule.forRoot()
   ],
   providers: [ 
