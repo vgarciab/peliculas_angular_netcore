@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { generoCreacionDTO } from '../genero';
+import { GenerosService } from '../generos.service';
 
 @Component({
   selector: 'app-crear-genero',
@@ -11,20 +12,18 @@ export class CrearGeneroComponent implements OnInit {
 
 
   // Los Servicios se inyectan a través del constructor de la Class
-  constructor(private router: Router) { }
+  constructor(private router: Router, private generosService: GenerosService) { }
 
   ngOnInit(): void {
   }
 
 
   guardarCambios(genero: generoCreacionDTO) {
-    console.log(genero);
     //..guardar los cambios (a través de un servicio (backend))
-    // guardarCambios 
-
-    
-    // y volver a una dirección concreta (portada de películas, por ejemplo)
-    this.router.navigate(['/generos']);
+    this.generosService.crear(genero).subscribe(() => {
+      // y volver a una dirección concreta (portada de películas, por ejemplo)
+      this.router.navigate(['/generos']);
+    }, error => console.error(error));
   }
 
 
