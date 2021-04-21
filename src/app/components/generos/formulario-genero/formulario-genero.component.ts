@@ -21,10 +21,14 @@ export class FormularioGeneroComponent implements OnInit {
   // Los Servicios se inyectan a través del constructor de la Class
   constructor(private formBuilder: FormBuilder) { }
 
+  @Input()
+  errores: string[] = [];
+
+
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       nombre: ['', {
-        validators: [Validators.required, Validators.minLength(3)] //, primeraLetraMayuscula()] 
+        validators: [Validators.required, Validators.minLength(3), primeraLetraMayuscula()] 
       }]  // el valor por defecto del campo
     });
 

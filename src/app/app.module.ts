@@ -45,6 +45,7 @@ import { MapaComponent } from './components/utilidades/mapa/mapa.component';
 import { FormularioPeliculaComponent } from './components/peliculas/formulario-pelicula/formulario-pelicula.component';
 import { SelectorMultipleComponent } from './components/utilidades/selector-multiple/selector-multiple.component';
 import { AutocompleteActoresComponent } from './components/actores/autocomplete-actores/autocomplete-actores.component';
+import { MostrarErroresComponent } from './components/utilidades/mostrar-errores/mostrar-errores.component';
 
 
 registerLocaleData(localeEs);
@@ -77,7 +78,8 @@ registerLocaleData(localeEs);
     MapaComponent,
     FormularioPeliculaComponent,
     SelectorMultipleComponent,
-    AutocompleteActoresComponent
+    AutocompleteActoresComponent,
+    MostrarErroresComponent
   ],
   imports: [
     BrowserModule,

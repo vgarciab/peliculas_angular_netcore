@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { parsearErroresAPI } from '../../utilidades/utilidades';
 import { generoCreacionDTO } from '../genero';
 import { GenerosService } from '../generos.service';
 
@@ -14,6 +15,9 @@ export class CrearGeneroComponent implements OnInit {
   // Los Servicios se inyectan a través del constructor de la Class
   constructor(private router: Router, private generosService: GenerosService) { }
 
+  errores: string[] = [];
+
+  
   ngOnInit(): void {
   }
 
@@ -23,7 +27,7 @@ export class CrearGeneroComponent implements OnInit {
     this.generosService.crear(genero).subscribe(() => {
       // y volver a una dirección concreta (portada de películas, por ejemplo)
       this.router.navigate(['/generos']);
-    }, error => console.error(error));
+    }, error => this.errores = parsearErroresAPI(error)); //  console.error(error));
   }
 
 
