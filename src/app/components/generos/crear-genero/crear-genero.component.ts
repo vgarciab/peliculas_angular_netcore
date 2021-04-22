@@ -24,6 +24,7 @@ export class CrearGeneroComponent implements OnInit {
 
   guardarCambios(genero: generoCreacionDTO) {
     //..guardar los cambios (a través de un servicio (backend))
+    console.log(genero);
     this.generosService.crear(genero).subscribe(() => {
       // y volver a una dirección concreta (portada de películas, por ejemplo)
       this.router.navigate(['/generos']);
