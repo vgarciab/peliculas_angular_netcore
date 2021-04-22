@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { generoCreacionDTO } from '../genero';
+import { ActivatedRoute, Router } from '@angular/router';
+import { parsearErroresAPI } from '../../utilidades/utilidades';
+import { generoCreacionDTO, generoDTO } from '../genero';
+import { GenerosService } from '../generos.service';
 
 @Component({
   selector: 'app-editar-genero',
@@ -9,22 +11,33 @@ import { generoCreacionDTO } from '../genero';
 })
 export class EditarGeneroComponent implements OnInit {
 
-  modelo: generoCreacionDTO = {nombre: 'Drama'};
+  modelo: generoDTO | any;
+  errores: string[] = [];
 
-  constructor(private router: Router) { }
+  // ActivatedRoute se utiliza para poder extraer las variables de la ruta de la URL
+  constructor(private router: Router, 
+              private generosService: GenerosService,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    
+    this.activatedRoute.params.subscribe(params => {
+      this.generosService.obtenerPorId(params.id) // -> La variable de ruta, obtenerPorId
+        .subscribe(genero => {
+          this.modelo = genero;
+        }, () => this.router.navigate(['/generos'])) // esto es por si tenemos algún error (que será un 404); genero no encontrado
+    });
+
   }
 
 
   guardarCambios(genero: generoCreacionDTO) {
     console.log(genero);
     //..guardar los cambios (a través de un servicio (backend))
-    // guardarCambios 
-
-    
-    // y volver a una dirección concreta (portada de películas, por ejemplo)
-    this.router.navigate(['/generos']);
+    this.generosService.editar(this.modelo.id, genero)
+      .subscribe(() => {
+        this.router.navigate(['/generos']);
+      }, error => this.errores = parsearErroresAPI(error)) 
   }
 
 

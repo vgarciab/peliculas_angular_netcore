@@ -1,5 +1,11 @@
 <h2>Editar género</h2>
 
+<!-- con ngIf, se mostrará si el modelo es distino de null -->
 <app-formulario-genero 
+     *ngIf="modelo" 
     [modelo]="modelo"
-    (submitFormulario)="guardarCambios($event)"></app-formulario-genero>
+    [errores]="errores"
+    (submitFormulario)="guardarCambios($event)">
+</app-formulario-genero>
+
+<mat-spinner *ngIf="!modelo"></mat-spinner>
