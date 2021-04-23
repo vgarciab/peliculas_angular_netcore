@@ -18,7 +18,8 @@ export class FormularioActoresComponent implements OnInit {
   @Output()
   submitFormulario: EventEmitter<actorCreacionDTO> = new EventEmitter<actorCreacionDTO>();
 
-
+  @Input()
+  errores: string[] = [];
 
   constructor(private formBuilder: FormBuilder) { }
 
