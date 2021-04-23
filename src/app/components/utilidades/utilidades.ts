@@ -31,3 +31,20 @@ export function parsearErroresAPI(response: any): string[] {
 
     return resultado;
 }
+
+
+export function formatearFecha(date: Date) {
+    const formato = new Intl.DateTimeFormat('en', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+    });
+
+    const [
+        {value: month},, // lleva dos comas porque el mes el el primer elto de array
+        {value: day},,  // lleva dos comas porque el dia el el tercer elto de array
+        {value: year}   // el año el el quinto elto de array
+    ] = formato.formatToParts(date);
+
+    return `${year}-${month}-${day}`;
+}
