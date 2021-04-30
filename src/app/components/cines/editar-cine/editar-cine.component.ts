@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { parsearErroresAPI } from '../../utilidades/utilidades';
 import { cineCreacionDTO, cineDTO } from '../cine';
+import { CinesService } from '../cines.service';
 
 @Component({
   selector: 'app-editar-cine',
@@ -8,20 +11,34 @@ import { cineCreacionDTO, cineDTO } from '../cine';
 })
 export class EditarCineComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, 
+    private cinesService: CinesService,
+    private activatedRoute: ActivatedRoute) { }
 
-  modelo: cineDTO = {nombre: 'Sambil', latitud: 39.48996642174527, longitud: -31.21696472167969};
+  modelo: cineDTO | any;;
+  errores: string[] = [];
 
 
   ngOnInit(): void {
+    
+    this.activatedRoute.params.subscribe(params => {
+      this.cinesService.obtenerPorId(params.id) // -> La variable de ruta, obtenerPorId
+        .subscribe(cine => {
+          this.modelo = cine;
+        }, () => this.router.navigate(['/cines'])) // esto es por si tenemos algún error (que será un 404); genero no encontrado
+    });
+
   }
 
 
-  guardarCambios(actor: cineCreacionDTO) {
-    console.log(actor);
+  guardarCambios(cine: cineCreacionDTO) {
+    console.log(cine);
     //..guardar los cambios (a través de un servicio (backend))
-    // guardarCambios 
-}
+    this.cinesService.editar(this.modelo.id, cine)
+      .subscribe(() => {
+        this.router.navigate(['/cines']);
+      }, error => this.errores = parsearErroresAPI(error)) 
+  }
 
 
 }
