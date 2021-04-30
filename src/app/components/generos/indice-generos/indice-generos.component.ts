@@ -1,6 +1,7 @@
 import { HttpResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { MatTable } from '@angular/material/table';
 import { generoDTO } from '../genero';
 import { GenerosService } from '../generos.service';
 
@@ -12,6 +13,9 @@ import { GenerosService } from '../generos.service';
 export class IndiceGenerosComponent implements OnInit {
 
   constructor(private generosService: GenerosService) { }
+
+  @ViewChild('table')
+  table: MatTable<any> | any;
 
   generos: generoDTO[] = [];
   columnasAMostrar = ['id', 'nombre', 'acciones'];
