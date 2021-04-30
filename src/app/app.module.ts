@@ -15,6 +15,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MarkdownModule } from 'ngx-markdown';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import  "leaflet/dist/images/marker-shadow.png";
+import 'leaflet/dist/images/marker-icon.png';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 

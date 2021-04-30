@@ -1,3 +1,6 @@
 <h2>Crear cine</h2>
 
-<app-formulario-cine (submitFormulario)="guardarCambios($event)"></app-formulario-cine>
+<app-formulario-cine 
+    [errores]="errores"
+    (submitFormulario)="guardarCambios($event)">
+</app-formulario-cine>
