@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { parsearErroresAPI } from '../../utilidades/utilidades';
 import { actorCreacionDTO, actorDTO } from '../actor';
+import { ActoresService } from '../actores.service';
 
 @Component({
   selector: 'app-editar-actor',
@@ -13,23 +15,30 @@ export class EditarActorComponent implements OnInit {
   // Para poder leer la variable de ruta (p.e 'id' desde nuestro Componenente,editar-actor, en este caso >>>>
   // ActivatedRoute es un servicio nativo (Observable) con el que podemo obtener información acerca de la ruta en la cuál se encuentra el usuario.
   // Entonces, mediante ese servicio obtendremos el valor de la variable ('id', en el ejemplo, referido a actores/editar/:id)
-  constructor(private activatedRoute: ActivatedRoute) { }
+  // ActivatedRoute se utiliza para poder extraer las variables de la ruta de la URL
+  constructor(private router: Router, 
+    private actoresService: ActoresService,
+    private activatedRoute: ActivatedRoute) { }
 
-  modelo: actorDTO = {nombre: 'Víctor', fechaNacimiento: new Date(), foto: 'https://m.media-amazon.com/images/M/MV5BMjE3ODgyNTI4Nl5BMl5BanBnXkFtZTgwMTIyNTA2MzI@._V1_UX99_CR0,0,99,99_AL_.jpg'};
+  modelo: actorDTO | any;
+  errores: string[] = [];
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      console.log(params.id); // -> La variable de ruta, id
+      this.actoresService.obtenerPorId(params.id) // -> La variable de ruta, obtenerPorId
+        .subscribe(actor => {
+          this.modelo = actor;
+        }, () => this.router.navigate(['/actores'])) // esto es por si tenemos algún error (que será un 404); genero no encontrado
     });
   }
 
   guardarCambios(actor: actorCreacionDTO) {
     console.log(actor);
-    // guardarCambios 
-
-    
-    // y volver a una dirección concreta (portada de películas, por ejemplo)
-    // this.router.navigate(['/generos']);
+    //..guardar los cambios (a través de un servicio (backend))
+    this.actoresService.editar(this.modelo.id, actor)
+      .subscribe(() => {
+        this.router.navigate(['/actores']);
+      }, error => this.errores = parsearErroresAPI(error)) 
   }
 
 

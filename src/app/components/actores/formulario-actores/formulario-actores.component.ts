@@ -1,3 +1,4 @@
+import { FixedSizeVirtualScrollStrategy } from '@angular/cdk/scrolling';
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { actorCreacionDTO, actorDTO } from '../actor';
@@ -21,6 +22,8 @@ export class FormularioActoresComponent implements OnInit {
   @Input()
   errores: string[] = [];
 
+  imagenCambiada = false;
+
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -41,6 +44,7 @@ export class FormularioActoresComponent implements OnInit {
 
 
   archivoSeleccionado(file:any) {
+    this.imagenCambiada = true;
     this.form.get('foto').setValue(file)
 
   }
@@ -50,7 +54,11 @@ export class FormularioActoresComponent implements OnInit {
     this.form.get('biografia').setValue(texto);
   }
 
+
   guardarCambios() { // este método se llama onSubmit() en el código fuente de Felipe Gavilán
+    if (!this.imagenCambiada) {
+      this.form.patchValue({'foto': null})
+    }
     this.submitFormulario.emit(this.form.value); // aquí se accede a toda la información  contenida en el formulario.
   }
 
