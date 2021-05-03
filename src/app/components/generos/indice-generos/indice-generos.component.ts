@@ -14,9 +14,6 @@ export class IndiceGenerosComponent implements OnInit {
 
   constructor(private generosService: GenerosService) { }
 
-  @ViewChild('table')
-  table: MatTable<any> | any;
-
   generos: generoDTO[] = [];
   columnasAMostrar = ['id', 'nombre', 'acciones'];
   cantidadTotalRegistros: number | undefined;
