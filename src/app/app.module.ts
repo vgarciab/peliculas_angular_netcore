@@ -48,6 +48,7 @@ import { FormularioPeliculaComponent } from './components/peliculas/formulario-p
 import { SelectorMultipleComponent } from './components/utilidades/selector-multiple/selector-multiple.component';
 import { AutocompleteActoresComponent } from './components/actores/autocomplete-actores/autocomplete-actores.component';
 import { MostrarErroresComponent } from './components/utilidades/mostrar-errores/mostrar-errores.component';
+import { DetallePeliculaComponent } from './components/peliculas/detalle-pelicula/detalle-pelicula.component';
 
 
 registerLocaleData(localeEs);
@@ -81,7 +82,8 @@ registerLocaleData(localeEs);
     FormularioPeliculaComponent,
     SelectorMultipleComponent,
     AutocompleteActoresComponent,
-    MostrarErroresComponent
+    MostrarErroresComponent,
+    DetallePeliculaComponent
   ],
   imports: [
     BrowserModule,
