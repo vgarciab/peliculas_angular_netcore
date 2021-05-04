@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Coordenada } from '../../utilidades/mapa/coordenada';
+import { Coordenada, CoordenadaConMensaje } from '../../utilidades/mapa/coordenada';
 import { cineCreacionDTO } from '../cine';
 
 @Component({
@@ -24,7 +24,7 @@ export class FormularioCineComponent implements OnInit {
   @Output()
   submitFormulario: EventEmitter<cineCreacionDTO> = new EventEmitter<cineCreacionDTO>();
 
-  coordenadaInicial: Coordenada[] = [];
+  coordenadaInicial: CoordenadaConMensaje[] = [];
 
 
   ngOnInit(): void {
@@ -52,7 +52,7 @@ export class FormularioCineComponent implements OnInit {
 
     if (this.modelo !== undefined) {
       this.form.patchValue(this.modelo);
-      this.coordenadaInicial.push({ latitud: this.modelo.latitud, longitud: this.modelo.longitud});
+      this.coordenadaInicial.push({ latitud: this.modelo.latitud, longitud: this.modelo.longitud, mensaje:''});
     }
 
   }

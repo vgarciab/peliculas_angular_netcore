@@ -17,9 +17,9 @@ export class DetallePeliculaComponent implements OnInit {
               private sanitizer: DomSanitizer) { }
 
 
-  pelicula: PeliculaDTO | undefined;
-  fechaLanzamiento: Date | undefined;
-  trailerURL: SafeResourceUrl | undefined;
+  pelicula: PeliculaDTO | any;
+  fechaLanzamiento: Date | any;
+  trailerURL: SafeResourceUrl | any;
   coordenadas: CoordenadaConMensaje[] = [];
 
 
@@ -50,7 +50,7 @@ export class DetallePeliculaComponent implements OnInit {
       video_id = video_id.substring(0, posicionAmpersand);
     }
 
-    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://wwww.youtube.com/embed/${video_id}`);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${video_id}`);
 
   }
 

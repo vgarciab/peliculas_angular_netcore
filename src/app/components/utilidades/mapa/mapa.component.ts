@@ -1,7 +1,7 @@
 import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { latLng, LeafletMouseEvent, marker, Marker, tileLayer } from 'leaflet';
-import { Coordenada } from './coordenada';
+import { Coordenada, CoordenadaConMensaje } from './coordenada';
 
 
 
@@ -17,7 +17,10 @@ export class MapaComponent implements OnInit {
 
 
   @Input()  
-  coordenadasIniciales: Coordenada[] = [];
+  coordenadasIniciales: CoordenadaConMensaje[] = [];
+
+  @Input()
+  soloLectura: boolean = false;
 
   @Output() 
   coordenadaSeleccionada: EventEmitter<Coordenada> = new EventEmitter<Coordenada>();
@@ -35,19 +38,30 @@ export class MapaComponent implements OnInit {
 
   ngOnInit(): void {
     // Mapear las coordenadas
-    this.capas = this.coordenadasIniciales.map(valor => marker([valor.latitud, valor.longitud]));
+    this.capas = this.coordenadasIniciales.map((valor) => {
+      let marcador = marker([valor.latitud, valor.longitud]);
+      if (valor.mensaje) {
+        marcador.bindPopup(valor.mensaje, {autoClose: false, autoPan: false});
+      }
+      return marcador;
+    });
   }
 
 
   manejarClick(event: LeafletMouseEvent)  {
-    const latitud = event.latlng.lat;
-    const longitud = event.latlng.lng;
-    console.log({latitud, longitud})
+    if  (!this.soloLectura) {
+      const latitud = event.latlng.lat;
+      const longitud = event.latlng.lng;
+      console.log({latitud, longitud})
 
-    this.capas = [];
-    this.capas.push(marker([latitud, longitud]));
-    // El componente Padre (éste) va a recibir las coordenadas (desde el html)
-    this.coordenadaSeleccionada.emit({ latitud: latitud, longitud: longitud }) 
+      this.capas = [];
+      this.capas.push(marker([latitud, longitud]));
+      // El componente Padre (éste) va a recibir las coordenadas (desde el html)
+      this.coordenadaSeleccionada.emit({ 
+        latitud: latitud, 
+        longitud: longitud 
+      });
+    }
   }
 
 }
