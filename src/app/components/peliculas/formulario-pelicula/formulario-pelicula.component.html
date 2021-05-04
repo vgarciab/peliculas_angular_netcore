@@ -1,4 +1,6 @@
 
+<app-mostrar-errores [errores]="errores"></app-mostrar-errores>
+
 <form (submit)="guardarCambios()" [formGroup]="form">
     <mat-form-field appearance="outline">  
         <!-- Es asterisco indica (visualmente) que es un campo requerido -->
@@ -54,7 +56,8 @@
 
 
     <h4>Selecciona los actores</h4>
-    <app-autocomplete-actores></app-autocomplete-actores>
+    <app-autocomplete-actores [actoresSeleccionados]="actoresSeleccionados">
+    </app-autocomplete-actores>
 
 
     <div>
