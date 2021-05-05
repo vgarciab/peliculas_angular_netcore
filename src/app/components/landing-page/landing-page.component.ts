@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PeliculaDTO } from '../peliculas/pelicula';
+import { PeliculasService } from '../peliculas/peliculas.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -7,35 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
 
-  peliculasEnCines:[] | any;
+  constructor(private peliculasService: PeliculasService) {}
+  
+
+  peliculasEnCines: PeliculaDTO[] | any;
   // otra manera de declarar la variable >> peliculas: {titulo:string, fechaLanzamiento: Date, precio:number}[] | any;
   // o también >> peliculas?:Array<{titulo:string, fechaLanzamiento: Date, precio:number}>;
-  peliculasProximosEstrenos:[] | any;
+  peliculasProximosEstrenos: PeliculaDTO[] | any;
   
 
   ngOnInit(): void {
-    setTimeout(() => {
-      // this.peliculas = [];
-      this.peliculasEnCines = [ 
-        {
-          titulo: 'Spider-Man',
-          fechaLanzamiento: new Date(),
-          precio: 1400.99,
-          poster: 'https://m.media-amazon.com/images/M/MV5BMGZlNTY1ZWUtYTMzNC00ZjUyLWE0MjQtMTMxN2E3ODYxMWVmXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_UX182_CR0,0,182,268_AL_.jpg',
-        },
-        {
-          titulo: 'Moana',
-          fechaLanzamiento: new Date('2016-11-14'),
-          precio: 300.99,
-          poster: 'https://m.media-amazon.com/images/M/MV5BMjI4MzU5NTExNF5BMl5BanBnXkFtZTgwNzY1MTEwMDI@._V1_UX182_CR0,0,182,268_AL_.jpg'
-        },
-      ];
-
-      this.peliculasProximosEstrenos = [ 
-      ]
-
-
-    },500);
+    this.peliculasService.obtenerLandingPage().subscribe(landingPage => {
+      this.peliculasEnCines = landingPage.enCines;
+      this.peliculasProximosEstrenos = landingPage.proximosEstremos;
+    })
   }
 
 

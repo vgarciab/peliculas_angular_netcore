@@ -18,10 +18,15 @@ p {
     font-weight: bold;
 }
 
-image {
+img {
     width: 225pxpx;
+    height: 300px;
 }
 
 button {
     margin-left: 1em;
+}
+
+a {
+    text-decoration: none;
 }

@@ -13,7 +13,7 @@ export class IndiceCinesComponent implements OnInit {
 
   constructor(private cinesService: CinesService) { }
 
-  cines: cineDTO[] = [];
+  cines: cineDTO[] | any;
   columnasAMostrar = ['id', 'nombre', 'acciones'];
   cantidadTotalRegistros: number | undefined;
   paginaActual = 1;
