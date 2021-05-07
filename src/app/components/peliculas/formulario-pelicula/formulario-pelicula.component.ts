@@ -21,7 +21,7 @@ export class FormularioPeliculaComponent implements OnInit {
 
 
   @Input()
-  modelo: PeliculaDTO | any;
+  modelo: PeliculaDTO  = null!;
 
 
   @Output()
@@ -30,21 +30,23 @@ export class FormularioPeliculaComponent implements OnInit {
   // Géneros
   @Input()
   generosNoSeleccionados: MultipleSelectorModel[] = [];
-  
-  generosSeleccionados: MultipleSelectorModel[] = [];
+
+  @Input()
+  generosSeleccionados: MultipleSelectorModel[] =  [];
 
   // Cines
   @Input()
-  cinesNoSeleccionados: MultipleSelectorModel[] = [];
+  cinesNoSeleccionados: MultipleSelectorModel[] =  [];
   
-  cinesSeleccionados: MultipleSelectorModel[] = [];
+  @Input()
+  cinesSeleccionados: MultipleSelectorModel[] =  [];
 
 
   // Actores
   @Input()
-  actoresSeleccionados: actorPeliculaDTO[] = [];
+  actoresSeleccionados: actorPeliculaDTO[] =  [];
   
-
+  imagenCambiada = false;
 
   ngOnInit(): void {
     
@@ -73,6 +75,7 @@ export class FormularioPeliculaComponent implements OnInit {
 
   archivoSeleccionado(archivo: File) {
     this.form.get('poster').setValue(archivo);
+    this.imagenCambiada = true;
   }
 
   cambioMarkdown(texto: string) {
@@ -81,6 +84,7 @@ export class FormularioPeliculaComponent implements OnInit {
 
   
   guardarCambios() {
+    console.log('generos seleccionados guardar cambios');
     console.log(this.generosSeleccionados);
     // Géneros
     const generosIds = this.generosSeleccionados.map(val => val.llave);
@@ -95,6 +99,9 @@ export class FormularioPeliculaComponent implements OnInit {
     });
     this.form.get('actores').setValue(actores);
 
+    if (!this.imagenCambiada)  {
+      this.form.patchValue({'poster': null});
+    }
 
     // En el vídeo del curso, la vble 'submitFormulario' se llama 'OnSubmit' (ojo, que no es un evento, es una variable)
     this.submitFormulario.emit(this.form.value); // aquí se accede a toda la información  contenida en el formulario.

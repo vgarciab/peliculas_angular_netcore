@@ -38,3 +38,15 @@ export interface LandingPageDTO {
     enCines: PeliculaDTO[];
     proximosEstremos: PeliculaDTO[];
 }
+
+
+export interface PeliculaPutGet {
+    pelicula: PeliculaDTO;
+    generosSeleccionados: generoDTO[];
+    generosNoSeleccionados: generoDTO[];
+    cinesSeleccionados: cineDTO[];
+    cinesNoSeleccionados: cineDTO[];
+    actores: actorPeliculaDTO[];
+}
+
+
