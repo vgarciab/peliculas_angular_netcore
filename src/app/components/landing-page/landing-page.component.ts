@@ -19,11 +19,20 @@ export class LandingPageComponent implements OnInit {
   
 
   ngOnInit(): void {
+    this.cargarDatos();
+  }
+
+  cargarDatos() {
     this.peliculasService.obtenerLandingPage().subscribe(landingPage => {
       this.peliculasEnCines = landingPage.enCines;
       this.peliculasProximosEstrenos = landingPage.proximosEstrenos;
       console.log('')
     })
+  }
+
+
+  borrado(){
+    this.cargarDatos();
   }
 
 
