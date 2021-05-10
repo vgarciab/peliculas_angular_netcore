@@ -36,7 +36,7 @@ export interface PeliculaPostGet {
 
 export interface LandingPageDTO {
     enCines: PeliculaDTO[];
-    proximosEstremos: PeliculaDTO[];
+    proximosEstrenos: PeliculaDTO[];
 }
 
 

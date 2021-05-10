@@ -21,7 +21,8 @@ export class LandingPageComponent implements OnInit {
   ngOnInit(): void {
     this.peliculasService.obtenerLandingPage().subscribe(landingPage => {
       this.peliculasEnCines = landingPage.enCines;
-      this.peliculasProximosEstrenos = landingPage.proximosEstremos;
+      this.peliculasProximosEstrenos = landingPage.proximosEstrenos;
+      console.log('')
     })
   }
 
