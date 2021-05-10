@@ -20,7 +20,7 @@ export class PeliculasService {
   }
 
   public obtenerPorId(id: number): Observable<PeliculaDTO> {
-    return this.http.get<PeliculaDTO>(`${this.apiURL}/${id}`)
+    return this.http.get<PeliculaDTO>(`${this.apiURL}/${id}`);
   }
 
 

@@ -13,7 +13,7 @@ export class IndiceActoresComponent implements OnInit {
 
   constructor(private actoresService: ActoresService) { }
 
-  actores: actorDTO[] | undefined; // (Cfr. pregunta F.Gavilán en el curso: "Front-End Angular. <mat-spinner> parace que no funciona")
+  actores: actorDTO[] | any; // (Cfr. pregunta F.Gavilán en el curso: "Front-End Angular. <mat-spinner> parace que no funciona")
   columnasAMostrar = ['id', 'nombre', 'acciones'];
   cantidadTotalRegistros: number | undefined;
   paginaActual = 1;

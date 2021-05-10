@@ -32,10 +32,9 @@ export class SelectorMultipleComponent implements OnInit {
   deseleccionarTodo() {
     // el operador spread genera una lista de valores a partir de un array.
     this.NoSeleccionados.push(...this.Seleccionados);
-    this.Seleccionados = []; // >> es un bug, ya que perdemos la referencia que estabamos haciendo desde 
+    // this.Seleccionados = []; // >> es un bug, ya que perdemos la referencia que estabamos haciendo desde 
     // el componente padre (cfr. Preguntas y respuestas del curso: 'Selección de géneros y cines no se realiza correctamente' en clase 64)
     this.Seleccionados.length = 0;
-
   }
 
   seleccionar(item: MultipleSelectorModel, index: number) {

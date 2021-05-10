@@ -35,7 +35,7 @@
 
     <h4>Resumen de la película</h4>
     <app-input-markdown 
-        [contenidoMarkdown]="modelo.resumen!"
+        [contenidoMarkdown]="modelo?.resumen"
         (changeMarkdown)="cambioMarkdown($event)" 
         [placeHoldertextarea]="'Resumen'">
     </app-input-markdown>
@@ -56,7 +56,8 @@
 
 
     <h4>Selecciona los actores</h4>
-    <app-autocomplete-actores [actoresSeleccionados]="actoresSeleccionados">
+    <app-autocomplete-actores 
+        [actoresSeleccionados]="actoresSeleccionados">
     </app-autocomplete-actores>
 
 

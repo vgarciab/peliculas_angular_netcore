@@ -16,17 +16,18 @@ export class EditarPeliculaComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private router: Router) { }
 
-  modelo: PeliculaDTO =  null!;
-  generosNoSeleccionados: MultipleSelectorModel[] =  null!;
-  generosSeleccionados: MultipleSelectorModel[] =  null!;
-  cinesNoSeleccionados: MultipleSelectorModel[] =  null!;
-  cinesSeleccionados: MultipleSelectorModel[] =  null!;
-  actoresSeleccionados: actorPeliculaDTO[] =  null!;
+  modelo: PeliculaDTO | any;
+  generosNoSeleccionados: MultipleSelectorModel[] = [];
+  generosSeleccionados: MultipleSelectorModel[] = [];
+  cinesNoSeleccionados: MultipleSelectorModel[] = [];
+  cinesSeleccionados: MultipleSelectorModel[] = [];
+  actoresSeleccionados: actorPeliculaDTO[] = [];
 
 
 
   ngOnInit(): void {
-    // console.log('modelo: ' + this.modelo);
+    console.log('ngOnInit INI: ');
+    console.log(this.generosSeleccionados);
     this.activatedRoute.params.subscribe(params => {
       this.peliculasService.putGet(params.id) // -> La variable de ruta, obtenerPorId
         .subscribe(peliculaPutGet => {
@@ -38,13 +39,16 @@ export class EditarPeliculaComponent implements OnInit {
             return <MultipleSelectorModel>{llave: genero.id, valor: genero.nombre}
           });
 
-          
+          console.log('ngOnInit FIN: ');
+          console.log(this.generosSeleccionados);
+                
           this.cinesNoSeleccionados = peliculaPutGet.cinesNoSeleccionados.map(cines => {
             return <MultipleSelectorModel>{llave: cines.id, valor: cines.nombre}
           });
           this.cinesSeleccionados = peliculaPutGet.cinesSeleccionados.map(cines => {
             return <MultipleSelectorModel>{llave: cines.id, valor: cines.nombre}
           });
+
           this.actoresSeleccionados = peliculaPutGet.actores;
         });
     });
@@ -53,8 +57,11 @@ export class EditarPeliculaComponent implements OnInit {
 
   guardarCambios(pelicula: PeliculaCreacionDTO) {
     // console.log(pelicula);
-    // console.log('id');
-    // console.log(this.modelo.id);
+     // console.log('id');
+     // console.log(this.modelo.id);
+     console.log('guardarCambios en edita pelicula: ');
+     console.log(pelicula.generosIds);
+
     this.peliculasService.editar(this.modelo.id, pelicula)
     .subscribe(() => this.router.navigate(['/pelicula/' + this.modelo.id]))
   }

@@ -22,10 +22,10 @@ export class DetallePeliculaComponent implements OnInit {
   trailerURL: SafeResourceUrl | any;
   coordenadas: CoordenadaConMensaje[] = [];
 
-
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       this.peliculasService.obtenerPorId(params.id).subscribe(pelicula => {
+        console.log('(DetallePeliculasComponent) obtenerPorId: ');
         console.log(pelicula);
         this.pelicula = pelicula;
         this.fechaLanzamiento = new Date(this.pelicula.fechaLanzamiento);

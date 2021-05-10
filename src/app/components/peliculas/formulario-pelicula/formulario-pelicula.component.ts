@@ -21,7 +21,7 @@ export class FormularioPeliculaComponent implements OnInit {
 
 
   @Input()
-  modelo: PeliculaDTO  = null!;
+  modelo: PeliculaDTO  | any;
 
 
   @Output()
