@@ -50,6 +50,7 @@ import { AutocompleteActoresComponent } from './components/actores/autocomplete-
 import { MostrarErroresComponent } from './components/utilidades/mostrar-errores/mostrar-errores.component';
 import { DetallePeliculaComponent } from './components/peliculas/detalle-pelicula/detalle-pelicula.component';
 import { AutorizadoComponent } from './components/seguridad/autorizado/autorizado.component';
+import { LoginComponent } from './components/seguridad/login/login.component';
 
 
 registerLocaleData(localeEs);
@@ -85,7 +86,8 @@ registerLocaleData(localeEs);
     AutocompleteActoresComponent,
     MostrarErroresComponent,
     DetallePeliculaComponent,
-    AutorizadoComponent
+    AutorizadoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
