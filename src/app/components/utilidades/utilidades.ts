@@ -13,6 +13,8 @@ export function parsearErroresAPI(response: any): string[] {
     if (response.error) {
         if (typeof response.error === 'string') {
             resultado.push(response.error)
+        } else if (Array.isArray(response.error)) {
+            response.error.forEach((valor:any) => resultado.push(valor.description));
         } else {
             // en caso contrario, viene en forma de Map, donde cada campo tiene un conjunto de errores.
             const mapaErrores = response.error.errors;  // En .errors está el  mapa de errores.
@@ -24,7 +26,6 @@ export function parsearErroresAPI(response: any): string[] {
                     resultado.push(`${campo}: ${mensajeError}`)
                 });
             })
-            
         }
 
     }   

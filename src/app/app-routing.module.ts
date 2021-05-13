@@ -16,6 +16,7 @@ import { DetallePeliculaComponent } from './components/peliculas/detalle-pelicul
 import { EditarPeliculaComponent } from './components/peliculas/editar-pelicula/editar-pelicula.component';
 import { FiltroPeliculasComponent } from './components/peliculas/filtro-peliculas/filtro-peliculas.component';
 import { LoginComponent } from './components/seguridad/login/login.component';
+import { RegistroComponent } from './components/seguridad/registro/registro.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent },
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path: 'peliculas/buscar', component: FiltroPeliculasComponent },
   {path: 'pelicula/:id', component: DetallePeliculaComponent },
   {path: 'login', component: LoginComponent },
+  {path: 'registro', component: RegistroComponent },
   {path: '**', redirectTo: ''},  // -> Este es un wildcard que va a atrapar cualquier ruta (404, etc) que nos se aplique (no definida) en todas las anteriores (se leen por orden, de arriba a abajo)
 ];
 

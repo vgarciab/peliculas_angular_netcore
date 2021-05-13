@@ -51,6 +51,8 @@ import { MostrarErroresComponent } from './components/utilidades/mostrar-errores
 import { DetallePeliculaComponent } from './components/peliculas/detalle-pelicula/detalle-pelicula.component';
 import { AutorizadoComponent } from './components/seguridad/autorizado/autorizado.component';
 import { LoginComponent } from './components/seguridad/login/login.component';
+import { RegistroComponent } from './components/seguridad/registro/registro.component';
+import { FormularioAutenticacionComponent } from './components/seguridad/formulario-autenticacion/formulario-autenticacion.component';
 
 
 registerLocaleData(localeEs);
@@ -87,7 +89,9 @@ registerLocaleData(localeEs);
     MostrarErroresComponent,
     DetallePeliculaComponent,
     AutorizadoComponent,
-    LoginComponent
+    LoginComponent,
+    RegistroComponent,
+    FormularioAutenticacionComponent
   ],
   imports: [
     BrowserModule,
