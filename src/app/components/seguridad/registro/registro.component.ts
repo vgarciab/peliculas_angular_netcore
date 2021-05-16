@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { parsearErroresAPI } from '../../utilidades/utilidades';
 import { credencialesUsuario } from '../seguridad';
 import { SeguridadService } from '../seguridad.service';
@@ -10,7 +11,8 @@ import { SeguridadService } from '../seguridad.service';
 })
 export class RegistroComponent implements OnInit {
 
-  constructor(private seguridadService: SeguridadService) { }
+  constructor(private seguridadService: SeguridadService,
+              private router: Router) { }
 
   errores: string[] = [];
 
@@ -21,7 +23,8 @@ export class RegistroComponent implements OnInit {
   registrar(credenciales: credencialesUsuario){
     this.seguridadService.registrar(credenciales)
     .subscribe(respuesta => {  // subscribirse al Observable
-      console.log(respuesta);
+      this.seguridadService.guardarToken(respuesta);
+      this.router.navigate(['/']);
     }, errores => this.errores = parsearErroresAPI(errores));
   }
 

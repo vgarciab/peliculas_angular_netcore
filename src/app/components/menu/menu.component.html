@@ -37,8 +37,8 @@
 
     <app-autorizado>
         <ng-container autorizado>
-          <span>Hola, </span>
-          <a mat-button>Logout</a>
+          <span>Hola, {{seguridadService.obtenerCampoJWT('email')}}</span> <!-- este 'email' es el Claim configurado en el Web API (back-end)-->
+          <a mat-button (click)="seguridadService.logout()">Logout</a>
         </ng-container>
         <ng-container noAutorizado>
           <a mat-button routerLink="login">Login</a>
