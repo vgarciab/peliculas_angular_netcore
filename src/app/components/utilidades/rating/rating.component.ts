@@ -24,6 +24,7 @@ export class RatingComponent implements OnInit {
   constructor(private seguridadService: SeguridadService) { }
 
   ngOnInit(): void {
+    this.ratingAnterior = this.ratingSeleccionado; // >> código añadido sobre pregunta en clase 132: "Mantener puntuación tras pasar por encima de ella"
     this.maximoRatingArr = Array(this.maximoRating).fill(0);
   }
 
