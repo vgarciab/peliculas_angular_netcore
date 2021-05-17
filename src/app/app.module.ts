@@ -1,6 +1,6 @@
 import { NgModule, LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
@@ -53,6 +53,7 @@ import { AutorizadoComponent } from './components/seguridad/autorizado/autorizad
 import { LoginComponent } from './components/seguridad/login/login.component';
 import { RegistroComponent } from './components/seguridad/registro/registro.component';
 import { FormularioAutenticacionComponent } from './components/seguridad/formulario-autenticacion/formulario-autenticacion.component';
+import { SeguridadInterceptorService } from './components/seguridad/seguridad-interceptor.service';
 
 
 registerLocaleData(localeEs);
@@ -106,14 +107,9 @@ registerLocaleData(localeEs);
     SweetAlert2Module.forRoot()
   ],
   providers: [ 
-    {
-      provide: DEFAULT_CURRENCY_CODE,
-      useValue: 'EUR'
-    },
-    {
-      provide: LOCALE_ID,
-      useValue: 'es'
-    }
+    {provide: HTTP_INTERCEPTORS, useClass: SeguridadInterceptorService, multi: true},
+    {provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR'},
+    {provide: LOCALE_ID, useValue: 'es'}
   ],
   bootstrap: [AppComponent]
 })

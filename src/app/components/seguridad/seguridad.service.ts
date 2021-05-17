@@ -68,9 +68,13 @@ export class SeguridadService {
   // (LocalStorage es un API de almacenamiento que nos permiten usar los navegadores para guardar
   //   data pequeña en el PC del usuario; luego esa data la podemos recuperar y utilizarla)
   // En este caso, vamos a guardar el JWT y la fecha de expiración del mismo.
-  guardarToken(respuestaAutenticacion: respuestaAutenticacion){
+  guardarToken(respuestaAutenticacion: respuestaAutenticacion) {
     localStorage.setItem(this.llaveToken, respuestaAutenticacion.token);
     localStorage.setItem(this.llaveExpiracion, respuestaAutenticacion.expiracion.toString()); // .toString() es para poder guardarlo.
+  }
+
+  obtenerToken() {
+    return localStorage.getItem(this.llaveToken);
   }
 
 }
