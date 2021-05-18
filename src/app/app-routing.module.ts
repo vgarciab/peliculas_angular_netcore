@@ -15,6 +15,7 @@ import { CrearPeliculaComponent } from './components/peliculas/crear-pelicula/cr
 import { DetallePeliculaComponent } from './components/peliculas/detalle-pelicula/detalle-pelicula.component';
 import { EditarPeliculaComponent } from './components/peliculas/editar-pelicula/editar-pelicula.component';
 import { FiltroPeliculasComponent } from './components/peliculas/filtro-peliculas/filtro-peliculas.component';
+import { IndiceUsuariosComponent } from './components/seguridad/indice-usuarios/indice-usuarios.component';
 import { LoginComponent } from './components/seguridad/login/login.component';
 import { RegistroComponent } from './components/seguridad/registro/registro.component';
 
@@ -35,6 +36,7 @@ const routes: Routes = [
   {path: 'pelicula/:id', component: DetallePeliculaComponent },
   {path: 'login', component: LoginComponent },
   {path: 'registro', component: RegistroComponent },
+  {path: 'usuarios', component: IndiceUsuariosComponent, canActivate: [EsAdminGuard] },
   {path: '**', redirectTo: ''},  // -> Este es un wildcard que va a atrapar cualquier ruta (404, etc) que nos se aplique (no definida) en todas las anteriores (se leen por orden, de arriba a abajo)
 ];
 

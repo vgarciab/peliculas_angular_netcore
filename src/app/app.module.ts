@@ -54,6 +54,7 @@ import { LoginComponent } from './components/seguridad/login/login.component';
 import { RegistroComponent } from './components/seguridad/registro/registro.component';
 import { FormularioAutenticacionComponent } from './components/seguridad/formulario-autenticacion/formulario-autenticacion.component';
 import { SeguridadInterceptorService } from './components/seguridad/seguridad-interceptor.service';
+import { IndiceUsuariosComponent } from './components/seguridad/indice-usuarios/indice-usuarios.component';
 
 
 registerLocaleData(localeEs);
@@ -92,7 +93,8 @@ registerLocaleData(localeEs);
     AutorizadoComponent,
     LoginComponent,
     RegistroComponent,
-    FormularioAutenticacionComponent
+    FormularioAutenticacionComponent,
+    IndiceUsuariosComponent
   ],
   imports: [
     BrowserModule,

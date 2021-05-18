@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { credencialesUsuario, respuestaAutenticacion } from './seguridad';
+import { credencialesUsuario, respuestaAutenticacion, usuarioDTO } from './seguridad';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,25 @@ export class SeguridadService {
   private readonly llaveExpiracion = 'token-expiracion';
   private readonly campoRol = 'role';
 
+  
+  obtenerUsuarios(pagina: number, recordsPorPagina: number): Observable<any>{
+    let params = new HttpParams();
+    params = params.append('pagina', pagina.toString());
+    params = params.append('recordsPorPagina', recordsPorPagina.toString());
+    return this.httpClient.get<usuarioDTO[]>(`${this.apiURL}/listadousuarios`,  {observe: 'response', params})
+  }
+
+  
+  hacerAdmin(usuarioId: string){
+    const headers = new HttpHeaders('Content-Type: application/json');
+    return this.httpClient.post(`${this.apiURL}/hacerAdmin`, JSON.stringify(usuarioId), {headers});
+  }
+
+  
+  removerAdmin(usuarioId: string){
+    const headers = new HttpHeaders('Content-Type: application/json');
+    return this.httpClient.post(`${this.apiURL}/removerAdmin`, JSON.stringify(usuarioId), {headers});
+  }
 
   estaLogueado() {
     const token = localStorage.getItem(this.llaveToken);
